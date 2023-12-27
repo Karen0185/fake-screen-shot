@@ -1,0 +1,264 @@
+.AddMessage {
+    width: 95%;
+    background-color: #fff;
+    border-radius: 8px;
+    height: 450px;
+    z-index: 0;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 70px;
+    animation: addMessageShowAnim .3s forwards;
+    padding: 15px 20px;
+
+    .wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+
+        .top {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            
+            .left {
+                background-color: #f1f1f1;
+                border-radius: 8px;
+                display: flex;
+                overflow: hidden;
+
+                button {
+                    transition: all .3s;
+
+                    &:hover {
+                        background-color: #edf2f9;
+                    }
+
+                    &.active {
+                        background-color: #4c93ff;
+                        color: #fff;
+                    }
+                }
+            }
+
+            .right {
+                display: flex;
+                align-items: center;
+                height: 35px;
+            }
+
+            .close {
+                font-size: 18px;
+            }
+
+            button {
+                background-color: transparent;
+                padding: 5px 10px;
+                border: none;
+                cursor: pointer;
+            }
+        }
+
+        .messageText {
+            margin-top: 20px;
+            width: 100%;
+            textarea {
+                width: 100%;
+                border-radius: 8px;
+                resize: none;
+                outline: none;
+                padding: 10px 20px;
+            }
+        }
+
+        .time_date {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+
+            input {
+                height: 35px;
+                border: none;
+                background-color: #f1f1f1;
+                padding: 5px 10px;
+                border-radius: 8px;
+                outline: none;
+
+            }
+            div {
+                width: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .dateShow {
+                    width: 12px;
+                    height: 12px;
+                    position: relative;
+                    border-radius: 50px;
+                    margin-right: 10px;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        width: 14px;
+                        height: 14px;
+                        background-color: #e7e7e7;
+                        border-radius: 50%;
+                        transform: translateY(-50%);
+                        top: 50%;
+                        left: 0px;
+                        transition: all .2s;
+                    }
+    
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        width: 18px;
+                        height: 18px;
+                        border: 1px solid transparent;
+                        transform: translateY(-50%);
+                        border-radius: 50%;
+                        top: 50%;
+                        left: -4px;
+                        transition: all .5s;
+                    }
+
+                    
+                }
+
+                .dateShow.active {
+                    &::before {
+                        background-color: #4c93ff;
+                        width: 12px;
+                        height: 12px;
+                        transform: translateY(-50%);
+                        top: 50%;
+                        z-index: 3;
+                        left: 0px;
+                    }
+    
+                    &::after {
+                        width: 14px;
+                        height: 14px;
+                        border: 1px solid #4c93ff;
+                        left: -2px;
+                    }
+                }
+
+                input {
+                    width: 70%;
+                }
+            }
+        }
+
+        .message_options {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 200px 200px;
+            grid-template-rows: 25px 25px;
+            padding-left: 15px;
+            margin-top: 20px;
+
+            div {
+                position: relative;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+
+                .icon {
+                    margin-right: 3px;
+                    color: #c3c3c3;
+                }
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 14px;
+                    height: 14px;
+                    background-color: #e7e7e7;
+                    border-radius: 50%;
+                    transform: translateY(-50%);
+                    top: 50%;
+                    left: -19px;
+                    transition: all .2s;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 18px;
+                    height: 18px;
+                    border: 1px solid transparent;
+                    transform: translateY(-50%);
+                    border-radius: 50%;
+                    top: 50%;
+                    left: -22px;
+                    transition: all .5s;
+                }
+            }
+
+            div.active {
+                position: relative;
+
+                &::before {
+                    background-color: #4c93ff;
+                    width: 12px;
+                    height: 12px;
+                    transform: translateY(-50%);
+                    top: 50%;
+                    z-index: 3;
+                    left: -19px;
+                }
+
+                &::after {
+                    width: 14px;
+                    height: 14px;
+                    border: 1px solid #4c93ff;
+                    left: -21px;
+                }
+            }
+        }
+
+        .sendBtn {
+            background-color: #4c93ff;
+            border-radius: 8px;
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+            button {
+                background-color: #4c93ff;
+                border-radius: 5px;
+                border: none;
+                color: #fff;
+                padding: 10px 20px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.AddMessage.hide {
+    animation: addMessageCloseAnim .3s forwards;
+}
+
+@keyframes addMessageShowAnim {
+    0% {
+        transform: translate(-50%, 100%);
+    }
+    100% {
+        transform: translate(-50%, 0%);
+    }
+}
+
+@keyframes addMessageCloseAnim {
+    0% {
+        transform: translate(-50%, 0%);
+    }
+    100% {
+        transform: translate(-50%, 110%);
+    }
+}
